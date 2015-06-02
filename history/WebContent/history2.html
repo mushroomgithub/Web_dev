@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>History2 Page</title>
+<script type="text/javascript">
+	function goback(){
+		window.alert(history.length);
+		history.back();//等价于history.go(-1); 返回上级页面
+		//history.go(-1);
+		
+	}
+	
+</script>
+</head>
+<body>
+<a href="#" onclick="goback();">返回上级页面</a>
+</body>
+</html>

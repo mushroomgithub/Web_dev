@@ -1,0 +1,122 @@
+/*body样式*/
+body{
+	/*border:1px solid red;*/
+	width:1000px;
+	height:900px;
+	margin: 0 auto;
+	font-size: 12px;
+}
+
+/*div样式*/
+.div{
+	background-color: pink;
+	width:1000px;
+	height:22px;
+}
+
+/*登陆样式*/
+.login{
+	background-color: green;
+	width:420px;
+	height:22px;
+	float:left;
+}
+
+/*设置主页样式*/
+.navigate{
+	background-color: purple;
+	width:100px;
+	height:22px;
+	float:left;
+	margin-left: 100px;
+}
+/*超链接样式*/
+.myhref{
+	background-color: green;
+	width:100px;
+	height:22px;
+	float: right;
+}
+
+/*页面logo样式*/
+
+.loginlogo{
+	background-color: pink;
+	width:100px;
+	height:80px;
+	float: left;
+	margin-top: 5px;
+}
+.loginlogo img{
+	width:100px;
+	height: 80px;
+}
+/*导航栏样式*/
+.information{
+	background-color: green;
+	width:890px;
+	height: 80px;
+	float: right;
+	margin-top: 5px;
+}
+
+/*广告样式*/
+.ad{
+	
+	width:1000px;
+	height: 100px;
+	margin-top: 10px;
+	float: left;
+}
+
+/*招生广告*/
+.stuad{
+	background-color: blue;
+	width:90px;
+	height: 90px;
+	float: left;
+	margin:5px 0px 0px 3px;
+}
+
+/*广告1*/
+.ad1{
+	background-color: orange;
+	width:200px;
+	height: 90px;
+	float: left;
+	margin:5px 0px 0px 16px;
+}
+
+/*广告2*/
+.ad2{
+	background-color: orange;
+	width:340px;
+	height: 90px;
+	float: left;
+	margin:5px 0px 0px 16px;
+}
+
+/*广告3*/
+.ad3{
+	background-color: orange;
+	width:200px;
+	height: 90px;
+	float: left;
+	margin:5px 0px 0px 16px;
+}
+
+/*图片广告*/
+.adimg{
+	border-left:1px solid silver;
+	width:100px;
+	height: 90px;
+	float: left;
+	text-align:center;
+	margin:5px 0px 0px 10px;
+}
+
+.adimg img{
+	margin-top:5px;
+	width:98px;
+	height: 85px;
+}

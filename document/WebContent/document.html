@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>document Page</title>
+<script type="text/javascript">
+//document对象代表整个html文档，因此可以去访问到文档中的各个对象(元素)
+//getElementById
+/*
+ 1、规定html文档中id最好要唯一，如果不唯一，则只取第一个元素
+ 2、id好最好不要以数字打头
+ */
+ //获得id标识的内部文本
+function test(){
+	var myHref=document.getElementById('a1');
+	window.alert(myHref.innerText);//id相同的话，它只是取出了第一个满足条件的id中间的内容，后面的被忽略了
+}
+
+//getElementByName
+/*
+ 	当我们确实希望获得多个元素的值，可以使用getElementByName通过html元素的名字返回对象集合
+ */
+ //获得checkbox控件选中的内容
+ function test2(){
+		//id不能唯一，但是name可以重复
+		var hobbies=document.getElementsByName("hobby");
+		//window.alert(hobbies.length);//直接返回3,不论你有没有选中，如何判断是否选择呢？
+		for(var i=0;i<hobbies.length;i++){
+			//如何判断是否选中
+			if(hobbies[i].checked){
+				//要想获得checkbox选中的内容，我们只能通过value获得，所以在html元素的checkbox属性中，一定要记得添加value属性
+				window.alert("你的爱好是："+hobbies[i].value);
+			}
+		}
+	}
+	
+//getElementByTagName 通过html元素的标签名返回对象集合
+//判断html文档中有多少个input控件，通过标签名获取对象（元素）
+function test3(){
+	var myObjs=document.getElementsByTagName("input");
+	for(var i=0;i<myObjs.length;i++){
+		window.alert(myObjs[i].value);
+	}
+}
+//document对象动态的创建元素(节点)/添加元素(节点)/删除元素(节点)
+//createElement()动态创建html元素
+
+</script>
+</head>
+<body>
+<a id="a1" href="http://www.sohu.com">链接到sohu</a><br/>
+<a id="a1" href="http://www.sina.com">链接到sina</a><br/>
+<a id="a1" href="http://www.163.com">链接到163</a><br/>
+请选择你的兴趣爱好：
+<!-- 注意添加value属性，不然js中是得不到选中内容的 -->
+<input type="checkbox" name="hobby" value="足球"/>足球
+<input type="checkbox" name="hobby" value="篮球"/>篮球
+<input type="checkbox" name="hobby" value="音乐"/>音乐
+<br/>
+<input type="button" value="测试id" onclick="test()"/>
+<input type="button" value="测试name" onclick="test2()"/>
+<input type="button" value="How Many Input" onclick="test3()"/>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Login Page</title>
+<script type="text/javascript">
+//一个js版本的用户登录系统，当用户输入用户名，密码后，就跳转到第二个页面，4秒后，自动跳转到第三个页面
+function checkInput(){//验证用户名和密码是否输入正确
+	if($('uname')=="mogu"&& $("pwd")=="123456"){
+		return true;
+	}else{
+		return false;
+	}
+}
+function $(id){
+	return document.getElementById(id).value;
+}
+</script>
+</head>
+<body style="background-color: pink;">
+
+<form action="LoginSuccessful.html">
+用户名：<input type="text" id="uname"/><br/>
+密&nbsp;&nbsp;码：<input type="password" id="pwd"/><br/>
+<input type="submit" onclick="return checkInput()" value="登陆"/>
+</form>
+
+</body>
+</html>

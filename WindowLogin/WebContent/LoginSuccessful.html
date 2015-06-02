@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>LoginSuccessful Page</title>
+
+<script type="text/javascript">
+//登陆成功之后在该页面显示4秒后跳转到管理页面
+var timeout=4000;//设置一个超时时间，当超时时间为0时跳转到管理页面;
+function test3(){
+	if(timeout==0){
+		window.clearInterval(myTimer);
+		//_self表示在当前页面打开manager.html页面，替换当前页面，_blank表示新开一个页面打开manager.html页面
+		window.open("manager.html","_self");
+	}
+	document.getElementById("span2").innerText=timeout/1000+"秒后跳转管理页面...";
+	timeout=timeout-1000;
+}
+var myTimer=window.setInterval("test3()",1000);
+</script>
+</head>
+<body style="background-color: pink;">
+<span style="color: red;font-size: 20px;margin-bottom: 100px;">恭喜登陆成功！</span><br/><br/>
+<span id="span2"></span><br/>
+<span><a href="manager.html">直接跳转到管理页面</a></span>
+</body>
+</html>

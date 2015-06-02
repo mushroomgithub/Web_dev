@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>坦克背景实现转向</title>
+<script type="text/javascript">
+//通过显示背景图部分，背景图为40*148，div为40*37,正好四幅图
+function change(eventObj){
+	var mydiv=document.getElementById('tkdiv');
+	if(eventObj.value=="上"){
+		mydiv.style.backgroundPositionY="0px";
+	}else if(eventObj.value=="右"){
+		mydiv.style.backgroundPositionY="-37px";
+	}else if(eventObj.value=="下"){
+		mydiv.style.backgroundPositionY="74px";
+	}else if(eventObj.value=="左"){
+		mydiv.style.backgroundPositionY="37px";
+	}
+}
+</script>
+</head>
+<body>
+<div id="tkdiv" style="background-position-y:0px;background-image: url('./pic/tk.bmp');width: 40px;height: 37px;"></div><br/>
+<input type="button" value="上" onclick="change(this)"/>
+<input type="button" value="右" onclick="change(this)"/>
+<input type="button" value="下" onclick="change(this)"/>
+<input type="button" value="左" onclick="change(this)"/>
+</body>
+</html>

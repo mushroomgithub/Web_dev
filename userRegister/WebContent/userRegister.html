@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>userRegister Page</title>
+<link rel="stylesheet" type="text/css" href="register.css">
+<script type="text/javascript">
+function checkRules(){//返回false就放弃提交，界面不刷新清空
+	//为了防止提示信息在输入符合规则之后，不请空，开始先将提示信息全部清空
+	span1.innerText="";
+	span2.innerText="";
+	span3.innerText="";
+	if(document.forms[0].username.value.length<4||document.forms[0].username.value.length>6){
+		//可以直接使用id代表元素本身
+		//window.alert("no ok");
+		span1.innerText="用户名长度4-6位";
+		return false;//表示不提交，表单就不会刷新，这样就不会什么都看不到效果
+	}
+	
+	if(document.forms[0].pwd1.value.length<=3){
+		span2.innerText="输入密码长度不得小于3位";
+		return false;
+	}
+	
+	if(document.forms[0].pwd1.value!=document.forms[0].pwd2.value){
+		span3.innerText="两次输入密码不同";
+		return false;
+	}
+}
+</script>
+</head>
+<body>
+<h1 style="margin-left: 80px;font-size: 20px;font-family: 华文行楷 ;">用户注册</h1>
+<form action="">
+<table border="0px">
+<tr><td>用&nbsp;户&nbsp;名：</td><td class="td2"><input type="text" name="username"/><span id="span1"></span></td></tr>
+<tr><td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td><td><input type="password" name="pwd1"/><span id="span2"></span></td></tr>
+<tr><td>确认密码：</td><td><input type="password" name="pwd2"/><span id="span3"></span></td></tr>
+<tr><td>年&nbsp;&nbsp;&nbsp;&nbsp;龄：</td><td><input type="text" name="age"/></td></tr>
+<tr><td>电子邮件：</td><td><input type="text" name="email"/></td></tr>
+<tr><td>电话号码：</td><td><input type="text" name="tel"/></td></tr>
+<tr><td><input type="submit" value="注册新用户" onclick="return checkRules()"/></td><td><input type="reset" value="取消"/></td></tr>
+</table>
+</form>
+</body>
+</html>

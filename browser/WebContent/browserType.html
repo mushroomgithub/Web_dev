@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>浏览器种类如何区分</title>
+<script language="javascript">
+	if(window.XMLHttpRequest){//Mozilla,Safari,IE7，IE8..
+		if(!window.ActiveXObject){//Mozilla,Safari
+			alert('Mozilla,Safari');
+		}else{
+			alert('IE');
+		}
+	}else{
+		alert('IE6');
+	}
+</script>
+</head>
+<body>
+
+</body>
+</html>

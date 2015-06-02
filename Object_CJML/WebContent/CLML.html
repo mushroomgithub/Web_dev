@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CLML Games</title>
+<!-- 引入CSS -->
+<link rel="stylesheet" type="text/css" href="CSS/game.css"/>
+<script type="text/javascript">
+//采用面向对象思想设计超级马里奥游戏人物
+//游戏分析
+/*
+ 	1、看看如何通过按钮控制mario的位置
+ 	2、设计相关的对象（Mario,x,y...）
+ */
+ //设计Mario类
+ function Mario(){
+	this.x=0;
+	this.y=0;
+	//移动0——>上，1->右，2->下，3->左
+	this.move=function(direct){
+		switch(direct){
+		case 1:
+			window.alert("右移");
+			break;
+		case 0:
+			window.alert("上移动");
+			break;
+		case 2:
+			window.alert("下移动");
+			break;
+		case 3:
+			window.alert("左移动");
+			break;
+		}
+	}
+}
+
+//设计Mogu类
+function Mogu(){
+	this.x=0;
+	this.y=0;
+	//移动0——>上，1->右，2->下，3->左
+	this.move=function(direct){
+		switch(direct){
+		case 1:
+			window.alert("右移");
+			break;
+		case 0:
+			window.alert("上移动");
+			break;
+		case 2:
+			window.alert("下移动");
+			break;
+		case 3:
+			window.alert("左移动");
+			break;
+		}
+	}
+}
+
+//定义一个全局的Mario对象，控制mario的动作
+var myMario=new Mario();
+//定义一个全局的Mogu对象，控制mogu的动作
+var mogu=new Mogu();
+
+//定义一个全局函数供按钮调用
+function MarioMove(direct){
+	switch(direct){
+	case 1:
+		//window.alert("右移");
+		//要想控制图片mario的移动我们可以使用dom对象通过图片id来获得img元素
+		var marioImg=document.getElementById("myMario");
+		
+		var moguImg=document.getElementById("myMogu");
+		//window.alert(marioImg);//返回object，说明我们真的获得了img元素
+		//要想让图片向右移动，我们可以使得img元素的style样式的left值增加即可
+		//window.alert(marioImg.style.left);//但是打印我们知道style.left值是一个100px的字符串，所以我们需要想办法去掉px
+		var left=marioImg.style.left;
+		left=left.substr(0,left.length-2);	//去掉最后的px
+		
+		//window.alert(left);
+		//此时就可以通过改变style.left的值，使得图片元素向右移动了
+		left=parseInt(left);
+		
+		var top=marioImg.style.top;
+		top=top.substr(0,top.length-2);
+		top=parseInt(top);
+		if(left>=450){
+			//window.alert("不能再向右移动了");
+			left=-40;
+		}
+		marioImg.style.left=left+50+"px";//最后的px是让改变的left值变为字符串
+		
+		var left2=moguImg.style.left;
+		left2=left2.substr(0,left2.length-2);
+		left2=parseInt(left2);
+		
+		var top2=moguImg.style.top;
+		top2=top2.substr(0,top2.length-2);
+		top2=parseInt(top2);
+		if(left2<=50){
+			//window.alert("left2不能再向左移动了");
+			left2=509;
+		}
+		moguImg.style.left=left2-50+"px";//最后的px是让改变的left值变为字符串
+		
+		//求Mario和mogu的水平方向距离和垂直方向距离
+		var x=Math.abs(left-left2);
+		var y=Math.abs(top-top2);
+		//水平方向和垂直方向发生相撞的标志位，初始化为0，为1时表示发生碰撞
+		var flagx=0;
+		var flagy=0;
+		
+		//发生碰撞的情况
+		if(y==0&&x==0){
+			window.alert("HaHa,I Get You!");
+			break;
+		}
+		break;
+	case 0:
+		//window.alert("上移动");
+		var marioImg=document.getElementById("myMario");
+		
+		var moguImg=document.getElementById("myMogu");
+		//window.alert(marioImg.style.bottom);
+		var top=marioImg.style.top;
+		top=top.substr(0,top.length-2);
+		top=parseInt(top);
+		
+		var left=marioImg.style.left;
+		left=left.substr(0,left.length-2);	//去掉最后的px
+		left=parseInt(left);
+		
+		if(top<=50){
+			//window.alert("不能再向上移动了");
+			top=59;
+		}
+		marioImg.style.top=top-50+"px";
+		
+		var top2=moguImg.style.top;
+		top2=top2.substr(0,top2.length-2);
+		top2=parseInt(top2);
+		
+		var left2=moguImg.style.left;
+		left2=left2.substr(0,left2.length-2);	//去掉最后的px
+		left2=parseInt(left2);
+		if(top2>=350){
+			//window.alert("不能再向下移动了");
+			top2=-40;
+		}
+		moguImg.style.top=top2+50+"px";
+		
+		//求Mario和mogu的水平方向距离和垂直方向距离
+		var x=Math.abs(left-left2);
+		var y=Math.abs(top-top2);
+		//水平方向和垂直方向发生相撞的标志位，初始化为0，为1时表示发生碰撞
+		var flagx=0;
+		var flagy=0;
+		
+		//发生碰撞的情况
+		if(y==0&&x==0){
+			window.alert("HaHa,I Get You!");
+			break;
+		}
+		break;
+	case 2:
+		//window.alert("下移动");	
+		var marioImg=document.getElementById("myMario");
+		
+		var moguImg=document.getElementById("myMogu");
+		//window.alert(marioImg.style.top);
+		var top=marioImg.style.top;
+		top=top.substr(0,top.length-2);	//去掉最后的px
+		top=parseInt(top);
+		
+		var left=marioImg.style.left;
+		left=left.substr(0,left.length-2);	//去掉最后的px
+		left=parseInt(left);
+		
+		if(top>=350){
+			//window.alert("不能再向下移动了");
+			top=-40;
+		}
+		marioImg.style.top=top+50+"px";//最后的px是让改变的top值变为字符串
+		
+		var top2=moguImg.style.top;
+		top2=top2.substr(0,top2.length-2);	//去掉最后的px
+		top2=parseInt(top2);
+		
+		var left2=moguImg.style.left;
+		left2=left2.substr(0,left2.length-2);	//去掉最后的px
+		left2=parseInt(left2);
+		if(top2<=50){
+			//window.alert("不能再向上移动了");
+			top2=409;
+		}
+		moguImg.style.top=top2-50+"px";//最后的px是让改变的top值变为字符串
+		
+		//求Mario和mogu的水平方向距离和垂直方向距离
+		var x=Math.abs(left-left2);
+		var y=Math.abs(top-top2);
+		//水平方向和垂直方向发生相撞的标志位，初始化为0，为1时表示发生碰撞
+		var flagx=0;
+		var flagy=0;
+		
+		//发生碰撞的情况
+		if(y==0&&x==0){
+			window.alert("HaHa,I Get You!");
+			break;
+		}
+		break;
+	case 3:
+		//window.alert("左移动");
+		var marioImg=document.getElementById("myMario");
+		
+		var moguImg=document.getElementById("myMogu");
+		//window.alert(marioImg.style.right);
+		var left=marioImg.style.left;
+		left=left.substr(0,left.length-2);
+		left=parseInt(left);
+		
+		var top=marioImg.style.top;
+		top=top.substr(0,top.length-2);
+		top=parseInt(top);
+		
+		if(left<=50){
+			//window.alert("不能再向左移动了");
+			left=59;
+		}
+		marioImg.style.left=left-50+"px";
+		
+		var left2=moguImg.style.left;
+		left2=left2.substr(0,left2.length-2);
+		left2=parseInt(left2);
+		
+		var top2=moguImg.style.top;
+		top2=top2.substr(0,top2.length-2);
+		top2=parseInt(top2);
+		
+		if(left2>=459){
+			//window.alert("不能再向右移动了");
+			left2=-40;
+		}
+		moguImg.style.left=left2+50+"px";
+		
+		//求Mario和mogu的水平方向距离和垂直方向距离
+		var x=Math.abs(left-left2);
+		var y=Math.abs(top-top2);
+		//水平方向和垂直方向发生相撞的标志位，初始化为0，为1时表示发生碰撞
+		var flagx=0;
+		var flagy=0;
+		
+		//发生碰撞的情况
+		if(y==0&&x==0){
+			window.alert("HaHa,I Get You!");
+			break;
+		}
+		
+		break;
+	}
+}
+
+
+</script>
+
+</head>
+<body>
+<div class="gameDiv">
+<img id="myMario" style="width: 50px;height: 50px;left: 9px;top: 9px;position: absolute;" alt="mario" src="pic/mario.bmp"/>
+<img id="myMogu" style="width: 50px;height: 50px;left: 209px;top: 209px;position: absolute;" alt="蘑菇" src="pic/mogu.bmp"/>
+</div>
+<table class="controlCenter" border="1px">
+<tr><td colspan="3">游戏控制台</td></tr>
+<tr><td>**</td><td><input type="button" value="↑" onclick="MarioMove(0)"/></td><td>**</td></tr>
+<tr><td><input type="button" value="←" onclick="MarioMove(3)"/></td><td>**</td><td><input type="button" value="→" onclick="MarioMove(1)"/></td></tr>
+<tr><td>**</td><td><input type="button" value="↓" onclick="MarioMove(2)"/></td><td>**</td></tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,56 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+/*div1 用于控制显示的位置。*/
+.div1{
+	border:1px solid red;
+	width: 500px;
+	height:300px;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+/*imgul 用于控制显示图片区域的宽度和高度*/
+.imgul{
+	border:1px solid red;
+	width:400px;
+	height:250px;
+	margin-left: 5px;
+	padding: 0px;
+	
+}
+/*用于控制单个图片区域的大小。*/
+.imgul li{
+	border:1px solid blue;
+	width:50px;
+	height:70px;
+	list-style-type: none;/*去除无序列表左边的原点*/
+	float: left;/*左浮动*/
+	margin-top:5px;
+	margin-left: 5px;
+}
+/*用于控制图片本身的大小*/
+.imgul img{
+	width:40px;
+	height:45px;
+	margin-top: 2px;
+	margin-left: 4px;
+}
+
+a:LINK {
+	color:black;
+	font-size:8px;
+	text-decoration: none;
+	margin-left: 8px;
+}
+
+a:HOVER {
+	color:pink;
+	font-size:8px;
+	text-decoration: underline;
+}
+
+a:VISITED {
+	color: black;
+}

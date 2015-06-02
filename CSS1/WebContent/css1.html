@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<!-- 测试CSS的class样式选择器 -->
+<style type="text/css">
+	.styles{font-size: 30px;font-family: monospace;font-style: italic;color: red;font-weight: lighter;}
+	.color{color:gray;font-weight:bold;text-decoration: underline;}
+	/*使用CSS滤镜  这是html的一种标签样式选择器  */
+	a:LINK	img{/*a:link表示超链接默认情况下的滤镜效果 */
+		filter:gray; /* 彩色图片变灰色  */
+	}
+	a:HOVER img{/*a:hover表示超链接鼠标位于超链接上方时情况下 的滤镜效果 */
+	filter:"";
+}
+</style>
+</head>
+<body>
+<!--  
+<span style="font-size: 30px;color:blue;">栏目一</span><br/>
+<span style="font-size: 10px;color:red;font-style:italic;">栏目二</span><br/>
+<span style="font-size: 40px;color:green;font-weight: bold;">栏目三</span><br/>
+<span style="font-size: 60px;color:blue;font-family: fantasy;">栏目四</span><br/>
+<span style="font-size: 20px;color:blue;font-weight: lighter;">栏目五</span><br/>
+-->
+<span class="styles">栏目一</span><br/>
+<span class="styles">栏目二</span><br/>
+<span class="styles color">栏目三</span><br/>
+<span class="styles">栏目四</span><br/>
+<span class="styles color">栏目五</span><br/>
+<!-- 测试CSS的滤镜功能 -->
+<hr/>
+<h3><font color=red>测试CSS的滤镜功能：</font></h3/>
+<a href="#"><img src="./images/Chrysanthemum.jpg" width="50" height="50"/></a>
+<a href="#"><img src="./images/Hydrangeas.jpg" width="50" height="50"/></a>
+<a href="#"><img src="./images/Koala.jpg" width="50" height="50"/></a>
+<a href="#"><img src="./images/Penguins.jpg" width="50" height="50"/></a>
+<a href="#"><img src="./images/Tulips.jpg" width="50" height="50"/></a>
+</body>
+</html>

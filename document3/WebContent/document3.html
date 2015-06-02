@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>document3 Page</title>
+<script type="text/javascript">
+//document的属性
+//设置doc前景色
+/*document.fgColor="red";
+//设置doc背景色
+document.bgColor="black";
+//doc URL
+window.alert(document.URL);
+//doc titile
+window.alert(document.title);
+//doc domain
+window.alert(document.domain);*/
+
+//body对象的几个常用方法 innerText：某个元素之间的文本，innerHTML:某个元素之间的html代码 的区别
+function test(){
+	//innerText浏览器只是单纯的将其后的内容直接解析成为本,此时的超链接不会生成，只是一段文本
+	document.getElementById('myspan').innerText="<a href='http://www.baidu.com'>Goto 百度</a>";
+	//innerHTML浏览器会将其后的内容直接解析为HTML代码，这个时候超链接就是可用的
+	document.getElementById('myspan').innerHTML="<a href='http://www.baidu.com'>Goto 百度</a>";
+}
+</script>
+</head>
+<body>
+<span id="myspan"></span>
+<input type="button" onclick="test()" value="测试"/>
+</body>
+</html>

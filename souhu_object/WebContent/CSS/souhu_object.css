@@ -1,0 +1,90 @@
+body{
+	font-size: 12px;
+}
+.div1{
+	width: 126px;
+	height: 156px;
+	/*background-color:pink;*/
+}
+
+.div2{
+	width:20px;
+	height: 156px;
+	float: left;
+}
+.div2 ul{
+	padding: 0px;
+	margin-left: 0px;
+	margin-top:0px;
+	float: left;
+}
+.div2 li{
+	list-style-type: none;
+	width:20px;
+	height:50px;
+	margin-top:2px;
+	float:left;
+	text-align:center;
+	background-color: silver;
+	padding-top: 0px;
+}
+
+.div3{
+	width:101px;
+	height: 156px;
+	/*background: green;*/
+	margin-left:5px;
+	float: left;
+	display: block;
+}
+.div3 ul{
+	padding: 0px;
+	margin-top:2px;
+	float: left;
+	
+}
+.div3 li{
+	list-style-type: none;
+	float: left;
+	line-height: 19px;
+}
+
+.div4{
+	width:101px;
+	height: 156px;
+	/*background: green;*/
+	float: left;
+	display: none;
+}
+
+.div4 ul{
+	padding: 0px;
+	margin-top:2px;
+	float: left;
+	
+}
+.div4 li{
+	list-style-type: none;
+	float: left;
+	line-height: 19px;
+}
+
+.div5{
+	width:101px;
+	height: 156px;
+	/*background: green;*/
+	float: left;
+	display: none;
+}
+
+.div5 ul{
+	padding: 0px;
+	margin-top:2px;
+	float: left;
+	
+}
+.div5 li{
+	list-style-type: none;
+	float: left;
+	line-height: 19px;
+}

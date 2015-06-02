@@ -1,0 +1,25 @@
+body{
+	border:1px solid red; /*这里我们给body指定了boder的宽度，样式和颜色，这个顺序可以随意改变*/
+	width: 800px;
+	height: 1000px;
+	margin: 0 auto;/*0表示上下边距为0，auto表示左右居中*/
+}
+
+.style1{
+	width: 50px;
+	height: 52px;
+	border:1px solid blue;
+	margin-top: 10px;
+	margin-left: 100px;
+}
+/*父子选择器*/
+.style1 img{
+	width:40px;
+	height: 40px;
+	/*相对于div而言*/
+	/*margin-left: 5px;
+	margin-top: 5px;*/
+	/*相对于img而言，但是使用padding有可能将盒子撑大，慎重使用*/
+	padding-top: 5px;
+	padding-left: 5px;
+}

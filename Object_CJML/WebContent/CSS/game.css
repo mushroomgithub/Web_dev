@@ -1,0 +1,30 @@
+body{
+	width:800px;
+	height: 800px;
+	positon:absolute;
+}
+/*游戏主界面样式*/
+.gameDiv{
+	width:500px;
+	height:400px;
+	background-color: pink;
+	positon:absolute;
+}
+/*.moGuimg{
+	width:50px;
+	height: 50px;
+	margin-left: 200px;
+	margin-top: 250px;
+}*/
+/*游戏控制台样式*/
+.controlCenter{
+	width:200px;
+	height:100px;
+	margin-left:150px;
+	margin-top:10px;
+	border:1px solid silver;
+}
+
+.controlCenter tr{
+	text-align:center;
+}

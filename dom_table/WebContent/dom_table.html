@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dom_table Page</title>
+<script type="text/javascript">
+//dom table对象
+//1、 rows[] 表格中所有行的一个数组(针对表格)
+//2、 cells[] 表格中所有单元格的一个数组(针对一行)
+function test(){
+	//取出所有行
+	var myrows=mytable.rows;
+	/*window.alert(myrows.length);
+	//myrows[index]表示是一个htmltablerowelement
+	window.alert(myrows[1]);
+	//myrows[indexRow].cells[indexCell]表示是一个HtmlTableCellElement
+	window.alert(myrows[1].cells[0]);
+	//myrows[indexRow].cells[indexCell].innerText表示取出一行某一列单元格中的内容
+	window.alert(myrows[1].cells[0].innerText);
+	*/
+	//将表格中内容遍历全部打印出来
+	for(var i=0;i<myrows.length;i++){
+		var cellObj=myrows[i].cells;
+		//window.alert(cellObj.length);
+		for(var j=0;j<cellObj.length;j++){
+			document.write(myrows[i].cells[j].innerText+"&nbsp;&nbsp;&nbsp;");
+		}
+		document.write("<br/>");
+	}
+}
+
+//删除一行
+function test1(){
+	//删除第二行
+	//window.alert("ok");
+	mytable.deleteRow(1);
+	
+}
+
+//插入一行
+function test2(){
+	//相当于只添加了一个<tr>标签，没有放<td>,返回一个TableRow，表示新插入的一行
+	var tableRow=mytable.insertRow(3);
+	//之后就是操作TableRow Dom对象操作采用方法insertCell()在一行中指定的位置插入一个空的<td>元素，返回一个TableCell Dom对象，
+	//可以对这个TableCell对象直接使用innerText，为单元格存放内容
+	var tableCell=tableRow.insertCell(0);
+	tableCell.innerText="3";
+	tableRow.insertCell(1).innerText="李逵";
+	tableRow.insertCell(2).innerText="黑旋风";
+}
+</script>
+</head>
+<body>
+<h1 style="color: green;font-size: 20px;">梁山英雄排行榜</h1>
+<table id="mytable" border=1>
+<tr><td>排名</td><td>姓名</td><td>绰号</td></tr>
+<tr><td>1</td><td>宋江</td><td>及时雨</td></tr>
+<tr><td>2</td><td>卢俊义</td><td>玉麒麟</td></tr>
+</table>
+<input type="button" value="测试" onclick="test()"/>
+<input type="button" value="删除一行" onclick="test1()"/>
+<input type="button" value="插入一行" onclick="test2()"/>
+</body>
+</html>

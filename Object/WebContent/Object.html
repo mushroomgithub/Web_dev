@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JS Object</title>
+<script type="text/javascript">
+/*var a="123";
+window.alert(a.constructor);
+window.alert(typeof a);
+function Cat(){
+	
+}
+var cat=new Cat();
+window.alert(cat.constructor);
+window.alert(typeof cat);
+//如何判断一个对象实例是不是Person类型
+function Person(){
+	
+}
+var p=new Person();
+//方法一
+if(p instanceof Person){
+	window.alert("p是Person类型");
+}else{
+	window.alert(p不是Person类型);
+}
+//方法二
+if(p.constructor==Person){
+	window.alert("p是Person Ok");
+}else{
+	window.alert("p不是Person");
+}
+*/
+//测试带var与不带var的区别
+/* var abc=89;	//全局变量
+function test(){
+var	abc=900;	//局部变量
+}
+test();
+window.alert(abc);*/	//输出89,
+
+/*var abc=89;
+function test(){
+	abc=900;	//不带var 则表示abc用的是全局变量
+}
+test();
+window.alert(abc);*/	//输出900
+
+/*function Person(){
+	
+}*/
+/*var a=new Person();
+a.name="小米";
+a.age=10;
+var b=a;
+window.alert(b.age);*/	//输出10
+/*var a=new Person();
+a.name="小米";
+a.age=10;
+var b=a;	//a和b引用同一块堆内存
+b.name="小白";
+window.alert("b的名字是："+b.name+"  b的年龄是："+b.age+"  a的名字是："+a.name);*/
+
+//创建初始类就拥有一些属性，可以借用this指针
+/*function Person(){
+	this.name="abc";
+	this.age=10;
+}
+//下列方法定义的是两个相互独立的对象，对象的属性互不干扰
+var p1=new Person();
+var p2=new Person();
+p2.name="mushroom";
+window.alert(p1.name+"   "+p2.name);*/
+
+//可能大家会这样去思考
+/*function Person(){
+	var name="abc";	//如果这样定义一个类，此时name和age是私有的
+	var age=10;
+	this.name2="abc2";	//this.name2表示name2属性是公开的，外部可以直接访问
+	this.show=function(){	//在类中定义一个公有的方法(也叫特权方法)可以访问类中私有属性
+		window.alert(name+" "+age);
+		show2();
+	}
+	function show2(){	//这种方法则是Person类的私有方法，它也可以访问类的私有属性，但是在类之外不能访问
+		window.alert(name);
+	}
+}
+var p1=new Person();
+//window.alert(p1.name+" "+p1.age+" "+p1.name2);//错误
+p1.show();
+//p1.show2();//错误，提示对象不支持该属性和方法
+*/
+/*
+function Person(name,age){
+	//这个就是使用传入的实际参数，去初始化属性
+	this.name=name;
+	this.age=age;
+	//输出自己的名字,这里this.show就是一个公开的函数，函数名就是show
+	this.show=function(){
+		document.write(this.name);
+	}
+	//定义一个函数实现计算从1+2+...+100的结果
+	this.jiSuan=function(n){//n为定义的函数的参数
+		var sum=0;
+		for(var i=1;i<=n;i++)
+			sum+=i;
+		return sum;
+	}
+	this.add=function(num1,num2){
+		var sum=num1+num2;
+		return sum;
+	}
+}
+var p1=new Person("小马",20);
+var p2=new Person("小白",23);
+p1.show();
+p2.show();
+window.alert("求和的结果是："+p1.jiSuan(100));
+window.alert("两个数的和是："+p2.add(2,5));*/
+
+//另外一种方法给类添加成员函数
+/*function Dog(){
+	
+}
+var dog1=new Dog();
+dog1.shut=function(){	//动态绑定一个函数给shut，这个函数只有dog1对象拥有
+	window.alert("dog1");
+}
+
+dog1.shut();
+var dog2=new Dog();
+dog2.shut();*/	//报错，对象不支持shut属性或方法
+//现在我们希望所有的对象，共享某个函数，使用prototype,因为所有的类都有一个属性prototype，它绑定的东西被所有对象共享
+/*function Dog(){
+	
+}
+//使用prototype去绑定一个函数给shut，这个shut将会被所有对象共享，绑定在类级
+Dog.prototype.shut=function (){
+	window.alert("dog");
+}
+
+var dog1=new Dog();
+dog1.shut();	//输出dog
+var dog2=new Dog();
+dog2.shut();	//输出dog
+//判断dog1和dog2的shut是不是共享一块内存
+window.alert(dog1.shut==dog2.shut);//返回true，说明是共享一段函数代码
+//判断对象实例是否相等，==的作用，当==的两边都是字符串的时候，则比较内容是否相等;如果==两边是数字，则比较数字是否相等
+//如果==两边是对象名或者是对象函数名,则比较地址
+var dog3=new Dog();
+var dog4=new Dog();
+window.alert("dog3==dog4 ? "+(dog3==dog4));	//判断两个对象是否相等，返回false
+var dog5=dog4;
+window.alert("dog5==dog4 ? "+(dog5==dog4));	//返回true
+*/
+
+//闭包(closure)补讲，在讲多态之后讲
+/*
+ （1）闭包和gc是相关联的。
+ （2）闭包实际上时涉及一个对象的属性何时被gc处理回收的问题。
+ （3）怎样才能对对象的属性形成一个闭包。
+ */
+function A(){
+	var i=0;
+	function B(){
+		window.alert(++i);
+	}
+	//window.alert(i);
+	return B;
+}
+//闭包跟gc回收机制相关联的概念
+//A(); //这么调用的话，此时内存中会有一个i的空间，但是执行完var i=0;之后，没有人引用这块内存，gc会认为这块内存将被回收，但是什么时候被回收不知道
+var C=A(); /*但是这么调用的话，gc会发现函数A返回一个函数B，它又赋值给了C，而函数B中引用了i变量，相当于是对i这个变量进行了闭包，因为C可能还会用到i,使得gc不会回收它*/
+C();	//返回 1
+C();	//返回2，从而证明了i变量被闭包了，被保护起来，不让gc将其回收
+</script>	
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>RegExp Page</title>
+<script type="text/javascript">
+//正则表达式第一个例子
+//给你一个字符串(或一篇文章),请你找出所有四个数字连在一起的字串
+//创建一个正则表达式对象的方法一般有两种
+//1、var regExp=/正则表达式/gi  隐式创建
+//2、var regExp=new RegExp(正则表达式,"gi"); 显示创建
+function test(){
+	//首先获得文本域的内容
+	var con=content.innerText;
+	//window.alert(con);
+	//隐式创建一个正则表达式对象，g表示声明的正则表达式执行全局匹配，即是否在整个给定串中查找，
+	//i表示正则表达式不执行区分大小写的匹配，也即是忽略大小写进行匹配，如果有i标志被设置，则该属性为true，否则为false
+	//var myReg=/(\d){4}/gi;//可以检索一个有四个连续数字的文本 ,\d表示一个任意的数字，{4}表示(\d)连续出现四次
+	var myReg=new RegExp("(\\d){4}","gi");// \d需要转义\
+	while(res=myReg.exec(con)){//res是检索处理的结果，但是每一个结果就对应一个数组，该数组的res[0]就是找到的那个文本，如果找不大就返回null表示假
+		window.alert("找到："+res[0]);
+	}
+}
+
+//正则表达式RegExp对象自身方法
+//常用方法：
+/*
+ 1、exec()检索字符串指定的值，并返回值(找不到返回null) 
+ 2、test()检索字符串中指定的值，检索一个字符串是否匹配某个模式，返回true或者false
+ */
+ 
+/* var str="visit W3CShcool";
+ var myReg=new RegExp("sa","gi");
+ if(myReg.test(str)){
+	 window.alert("找到了");
+ }else{
+	 window.alert("没找到");
+ }
+ */
+ //RegExp对象的几个属性index,leftContext,rightContext它们都是RegExp对象的静态属性
+ function test4(){
+	 var con=content.value;
+	 //window.alert(con);
+	 var myreg=/(\d){4}/gi;
+	 while(res=myreg.exec(con)){//正则没循环一次,返回每次字符串匹配正则的值的起始位置，以及匹配字串左边内容和右边内容
+		 window.alert("index="+RegExp.index+" leftContext="+RegExp.leftContext+" rightContext="+RegExp.rightContext);
+	 }
+	 
+ }
+ 
+ //string对象跟正则表达式相关的的几个函数
+ /*search(regExp)函数,从字符串的开始进行检索,string 对象总是返回第一个与regexp匹配的子串的起始位置，它区分大小写，没找到匹配的值返回-1*/
+ /*var str="Hello W3CSchool";
+ window.alert(str.search(/W3CSchool/));
+ //match函数返回与正则表达式匹配的值都放到一个数组中
+ function test2(){
+	var con=content.value;
+	//var con=content.innerText;//为什么获得不到文本域中内容，上面就可以的啊？？？
+	//window.alert(con);
+	var myreg=/abc/gi;
+	var res=con.match(myreg);
+	for(var i=0;i<res.length;i++){
+		 window.alert("第"+i+"个是："+res[0]);
+	 }
+ }*/
+ 
+ //replace函数是将字符串对象匹配正则表达式的值替换为别的字符串或者字符
+ function test3(){
+	 var con=content.value;
+	 //把四个数换成“这里原来是四个数”
+	 var myreg=/(\d){4}/gi;
+	 var newCon=con.replace(myreg,"这里原来是四个数");
+	 //window.alert(newCon);
+	 content.value=newCon;
+ }
+ 
+ 
+//子表达式，捕获和反向引用
+function test5(){
+	var con=content.value;
+	//要求在一个字符串中查找出所有四个数字连在一起的子串，并且这四个数字要满足：第一位与第四位相同；第二位与第三位相同，如1221,5775 ...
+	 var myreg=/(\d)(\d)\2\1/gi;//从左到右第一个(\d)为第一个子表达式，第二个(\d)为第二个子表达式，\2表示反向引用第二个子表达式的内容，\1表示反向引用第一个表达式的内容
+	 //12312-333999111这样的号码，要求满足前面是一个让任意五位数，然后一个'-'号，在然后是一个九位数，连续的没三位要相同
+	 var myreg2=/(\d){5}-(\d)\2\2(\d)\3\3(\d)\4\4/gi;
+	 while(res=myreg2.exec(con)){
+		 window.alert(res[0]);
+	 }
+}
+
+//正则表达式元字符
+function test6(){
+	var con=content.value;
+	var myreg=/(\d){3}/gi;//限定连续出现三个任意0-9之间的的数字
+	var myreg2=/1+/gi;//元字符中的+表示前面的组合或者字符出现一次到任意多次，js是贪婪匹配的，能匹配多的不去匹配少的
+	var myreg3=/1*/gi;//*表示1出现0次到任意多次，
+	var myreg4=/a1?/gi;//？表示1出现0次到1次，
+	//如果你想匹配的是在一个范围可以用中括号给包起来比如[a-z]表示可以匹配a-z中任意一个字符,比如/[a-z]{2}/gi会去匹配字符串中连续出现的两个任意a-z之间的字符
+	var myreg5=/[a-z]{2}/gi;
+	//[^a-z]表示可以匹配不是a-z中的任意一个字符，比如/[^a-z]/gi,/[^a-z]{2}/gi表示不在[a-z]的任意两个字符
+	var myreg6=/[^a-z]{2}/gi;
+	//[abcd]表示可以匹配abcd中任意一个字符
+	//[^abcd]表示可以匹配不是abcd中的任意一个字符
+	/*
+		\d表示可以匹配0-9中的任意一个数字，相当于[0-9]
+		\D表示可以匹配不是0-9中的任意一个数字，相当于[^0-9]
+		\w表示匹配任意英文字符、数字和下划线，相当于[a-zA-Z0-9_]
+		\W相当于[^a-zA-Z0-9_]刚好与\w相反
+		\s表示匹配任意空白字符(空格，制表符等)
+		\S表示匹配任意非空白字符，刚好与\s相反
+		. 表示匹配出\n之外的所有字符，如果匹配失败，本身则需要使用\.
+	*/
+	
+	var myreg7=/(\w){3}/gi;
+	/*
+	元字符-定位符，用于规定要匹配的字符串出现的位置，比如在字符串的开始还是结束的位置，这个也是相当有用
+	^ 符号表示目标字符串的开始位置，注意跟中括号包起来的^符号的区别，中括号包起来的^表示非
+	比如/^han/gi,去匹配"hanshunping han han",它只会返回字符串开头位置匹配的han,后面的不会去匹配
+	$符号表示匹配目标字符串的结束位置
+	比如/han$/gi,去匹配"hanshunping han han",它只会返回字符串结束位置匹配的han,前面的不会去匹配
+	*/
+	var myreg8=/^han/gi;
+	var myreg9=/han$/gi;
+	/*
+	元字符-选择匹配符
+	有时候，我们在匹配某个字符串的时候是选择性的，既可以匹配这个，又可以匹配那个，这时我们需要用到选择匹配符号 |
+	比如说，用\(ma|马|麻))\gi去匹配字符串"ma shdafa马发附件给麻企鹅jdaa831",
+	*/
+	var myreg10=/(ma|马|麻)/gi;
+	while(res=myreg10.exec(con)){
+		window.alert(res[0]);
+	}
+}
+//验证用户输入是否符合邮件名规范
+function test7(){
+	var con=content.value;
+	//window.alert(con);
+	//var reg=/^[a-zA-Z0-9_-]+@([a-zA-Z0-9]+\.)+(com|cn|org|net)$/gi;
+	var reg=/^(\w|-)+@((\w)+\.)+(com|cn|org|net)$/gi;
+	if(reg.test(con)){
+		window.alert("符合邮件命名规范");
+	}else{
+		window.alert("不符合邮箱命名规范");
+	}
+}
+//比如说现在要匹配aabbccdd的子串，正则表达式可以写成/(\d)\1(\d)\2(\d)\3(\d)\4/gi
+
+</script>
+</head>
+<body>
+<textarea id="content" rows="10" cols="20"></textarea><br/>
+<input type="button" value="测试" onclick="test7()"/>
+</body>
+</html>

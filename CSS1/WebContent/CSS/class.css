@@ -1,0 +1,16 @@
+/*
+classÑ¡ÔñÆ÷£º
+*/
+
+.style1{
+	font-size: 15px;
+	font-weight: bold;
+	font-style:italic;
+	background-color: red;
+}
+
+.style2{
+	cursor:pointer;
+	color:green;
+	text-shadow: green; 
+}

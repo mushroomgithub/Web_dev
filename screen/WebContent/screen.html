@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Screen Page</title>
+<script type="text/javascript">
+//screen对象，该对象的作用是包含了有关客户机显示屏幕的信息，比如客户机分辨率之类的信息
+//例子,当用户的分辨率不是1024*768时，给出提示，请写出该程序
+/*
+ 	1 height 返回显示屏幕的高度（按像素）
+ 	2 width  返回显示屏幕的宽度（按像素）
+ 	3 availHeight  返回显示屏幕可用高度（去掉windows任务栏）
+ 	4 availWidth   返回显示屏幕可用宽度
+ */
+ //返回显示器屏幕的宽度
+ /*function getWidth(){
+	return window.screen.width;
+}
+//返回显示器屏幕的高度
+function getHeight(){
+	return window.screen.height;
+}
+var width=getWidth();
+var height=getHeight();
+if(width!=1024||height!=768){
+	window.alert("请将你的显示器分辨率调整到1024*768");
+}else{
+	window.alert("你的屏幕分辩率是1024*768");
+}
+*/
+//测试一下event对象
+function isNum(event){//在输入过程中判断输入是不是数字，是数字就输入到文本框中，不是的话就不输入
+	if(event.keyCode<48||event.keyCode>57){
+		window.alert("输入不是数字");
+		return false;
+	}
+}
+function test(){
+	var myText=document.getElementById('text1').value;
+	//window.alert(myText);
+	for(var i=0;i<myText.length;i++){
+		if(myText[i]<'0'||myText[i]>'9'){
+			window.alert("输入不是数字");
+			document.getElementById('text1').value="";
+			return false;
+		}
+	}
+	window.alert("输入的是数字");
+	return true;
+}
+</script>
+</head>
+<body>
+<input type="text" id="text1" onkeypress="return isNum(event)" /><input type="button" onclick="test()" value="判断数字"/>
+</body>
+</html>

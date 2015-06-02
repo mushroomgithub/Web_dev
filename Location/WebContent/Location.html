@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Location Page</title>
+<script type="text/javascript">
+//Location对象，作用是该对象包含客户端当前的URL地址栏信息
+//reload方法，相当于刷新
+function test(){
+	location.reload();
+	window.alert(location.href);
+	window.alert(location.protocol);
+	//如果没有弹出内容说明apache服务器没有启动
+	window.alert(location.host);
+	window.alert(location.hostname);
+	window.alert(location.port);
+}
+</script>
+</head>
+<body>
+<input type="button" value="刷新页面" onclick="test()"></input><br/>
+<p>sdahfalhfa'hfa'hgagahgahggyeyg9yhsa</p>
+</body>
+</html>

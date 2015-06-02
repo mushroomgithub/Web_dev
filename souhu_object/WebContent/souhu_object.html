@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>souhu_object Page</title>
+<link rel="stylesheet" type="text/css" href="CSS/souhu_object.css">
+<script type="text/javascript">
+//当鼠标在标签之上时，显示不同的div,并且将鼠标焦点所在标签背景色设置为橘子色
+function chageFocus(id,obj){
+	//window.alert("ok");
+	obj.style.backgroundColor="orange";
+	if(id=="zs"){
+		zs.style.display='block';
+		rz.style.display='none';
+		cg.style.display='none';
+	}else if(id=="rz"){
+		zs.style.display='none';
+		rz.style.display='block';
+		cg.style.display='none';
+	}else if(id="cg"){
+		zs.style.display='none';
+		rz.style.display='none';
+		cg.style.display='block';
+	}
+}
+//当鼠标焦点离开当前标签时，设置器背景色为原来的银灰色
+function leave(obj){
+	obj.style.backgroundColor="silver";
+}
+</script>
+</head>
+<body>
+<div class="div1">
+	<div class="div2">
+	<ul>
+	<li  onmouseover="chageFocus('zs',this)" onmouseout="leave(this)">招生</li>
+	<li  onmouseover="chageFocus('rz',this)" onmouseout="leave(this)">热招</li>
+	<li  onmouseover="chageFocus('cg',this)" onmouseout="leave(this)">出国</li>
+	</ul>
+	</div>
+	
+	<div class="div3" id="zs">
+	<ul>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	<li><a href="http://www.baidu.com">百度百度百度百度</a></li>
+	</ul>
+	</div>
+ 
+	<div class="div4" id="rz">
+	<ul>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	<li><a href="http://www.souhu.com">搜狐搜狐搜狐搜狐</a></li>
+	</ul>
+	</div>
+	
+	<div class="div5" id="cg">
+	<ul>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	<li><a href="http://www.taobao.com">淘宝淘宝淘宝淘宝</a></li>
+	</ul>
+	</div>
+	
+</div>
+</body>
+</html>

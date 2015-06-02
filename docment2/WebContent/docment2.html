@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>document2 Page</title>
+<script type="text/javascript">
+//document对象代表整个html文档，因此可以去访问到文档中的各个对象(元素)
+//document对象动态的创建元素(节点)/添加元素(节点)/删除元素(节点)
+//createElement()动态创建html元素
+function test(){
+	//createElement("???")函数中写你希望创建的html元素的标签名，比如现在创建超链接，这时只是创建了<a></a>没有内容
+	var myElement=document.createElement("a");
+	//给新元素添加必要的信息
+	myElement.href="http://www.baidu.com";
+	myElement.innerText="链接到百度";
+	myElement.id="id1";
+	//除此之外你也可以绝对定位一下你添加的元素额位置
+	/*myElement.style.left="200px";
+	myElement.style.top="200px";
+	myElement.style.position="absolute";//一定是绝对定位
+	*/
+	//一、创建完之后，不会立即在html上显示出来，需要将该元素添加到document.body上面去
+	//appendChild 向一个存在的节点添加一个子节点
+	document.body.appendChild(myElement);
+	//二、当然你也可将要添加的元素不添加到body，比如添加到一个存在的div中，也是可以的,此时就可以不要绝对定位了
+	document.getElementById("div1").appendChild(myElement);
+}
+//动态添加一个input标签类型是button
+function test2(){
+	var myElement=document.createElement("input");
+	myElement.type="button";
+	myElement.value="新按钮";
+	//document.body.appendChild(myElement);
+	document.getElementById("div1").appendChild(myElement);
+}
+
+//动态删除一个元素
+function test3(){
+	var myElement=document.getElementById("id1");
+	//首先找到要删除节点的父节点的id，之后调用方法removeChild()函数,这种方法太死，不灵活
+	//document.getElementById("div1").removeChild(myElement);
+	//当然我们也可以直接不用先去找到他的父节点，可以通过子节点找到父节点，比较灵活，推荐使用这种
+	window.alert(myElement.parentNode.id);//弹出div1表示由子节点得到了父节点
+	myElement.parentNode.removeChild(myElement);
+}
+</script>
+</head>
+<body>
+<input type="button" value="动态创建一个元素" onclick="test()"/>
+<input type="button" value="动态创建一个button" onclick="test2()"/>
+<input type="button" value="动态删除一个元素" onclick="test3()"/>
+<div id="div1" style="width:200px;height: 400px;border: 1px solid red;">div1</div>
+</body>
+</html>

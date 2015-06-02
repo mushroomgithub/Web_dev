@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function test(obj){
+	if(obj.innerText=="+"){
+		myfamily.style.display="block";
+		obj.innerText="-";
+	}else if(obj.innerText=="-"){
+		myfamily.style.display="none";
+		obj.innerText="+";
+	}
+}
+</script>
+</head>
+<body>
+<p><font style="font-size: 20px;color: fuchsia;">
+<span id="span" style="width: 40px;height: 20px;background-color:green;border: 1px solid silver;cursor:pointer;" onclick="test(this)">-</span>MyFamily
+</font>
+</p>
+<ul id="myfamily" style="display: block;">
+	<li>父亲</li>
+	<li>母亲</li>
+	<li>哥哥</li>
+	<li>弟弟</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,32 @@
+/*
+	html a元素的css设计
+*/
+
+a:LINK {
+	color: black;
+	font-size: 24px;
+	text-decoration: none;
+}
+
+a:HOVER {
+	text-decoration: underline;
+}
+
+a:VISITED {
+	color:red;
+}
+
+/* 使用通配符选择器，对外边距和内边距清0，这样可以防止不同浏览器打开网页时，
+由于其默认的上边距和内边距不一样，会造成同一个网页使用不同的浏览器打开显示的页面错位*/
+
+*{
+	/*margin: 0px;padding: 0px;*/
+	/*margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 10px;
+	margin-right: 0px;*/
+	margin:10px 0px 0px 10px;/* 从上外边距 top开始顺时针旋转 ，如果margin给出四个值，则表示上 右 下 左；
+	如果给出三个值，则代表，第一个值代表上，第二个是左-右，第三个是下*/
+	margin:10px 0px 0px;
+	padding: 0px;/*也是一样类似的，规范和margin一样*/
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JS dom</title>
+<script type="text/javascript">
+//window对象
+//window.confirm("确定关闭吗？");
+//setInterval()该函数可以根据指定的时间，周期的执行某个函数，或者表达式
+//需求,每隔1s，弹出hello world
+function sayHello(){
+	window.alert("Hello,World");
+}
+
+//设置一个简单的时钟,每一秒更新一次时间
+function showTime(){
+	//document.write(new Date());
+	//取得某个元素中的文本，都是使用 对象.innerText得到的
+	document.getElementById('mytime').innerText=new Date().toLocaleString();
+}
+
+//让静态图片动起来
+//使用clearInterval()，取消有setInterval设置的定时器
+//需求，图片动态，过一段时间比如10秒之后让图片停下来
+
+//如果要想实现让图片停止运动一段时间之后继续运行，可以使用setTimeout(),表示在指定的毫秒数之后调用函数或者计算表达式,但是只调用一次
+var n=1;
+var count=0;
+function runImg(){
+	//得到img对象
+	//window.alert(myimg.src);//如果只有一个id是myimg可以这么用，不用先get一个对象
+	count++;
+	if(count==11){//表示结束图片动态效果,停止这个定时器
+		clearInterval(myTimer);
+		setTimeout("reRun()",5000);
+		count=0;
+	}
+	var myImg=document.getElementById('myimg');
+	//切换src
+	myImg.src="pic/"+((n++%8)+1)+".jpg";
+}
+
+function reRun(){
+	var myTimer=window.setInterval(runImg, 1000);
+}
+
+//window.setInterval(sayHello,1000);
+//window.setInterval(showTime, 1000);
+var myTimer=window.setInterval(runImg, 1000);
+</script>
+</head>
+<body>
+<span id="mytime"></span>
+
+<img id="myimg" src="pic/1.jpg" width="100" height="100"/>
+</body>
+</html>

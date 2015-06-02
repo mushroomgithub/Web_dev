@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Learn Array</title>
+<script language="javascript" type="text/javascript">
+	/*var weights=[3,4,5.6,2,40];
+	//数组额遍历
+	var all_weight=0;
+	var avg_weight=new Number(0.0);//Number类的toFixed函数可以规定小数点后多少位
+	for(var i=0;i<weights.length;i++){
+		all_weight+=weights[i];
+	}
+	avg_weight=all_weight/weights.length;
+	document.writeln("总体重="+all_weight+"  平均体重="+avg_weight.toFixed(1));*/
+	/*var a=[1,2,3];
+	window.alert(a[3]);
+	类似于window.alert(b);*/   //类似于window.alert(b); 输出undefined
+	//js中数组是可以动态增长的，它是一种动态语言，只要你给它赋值
+	/*var a=[1,2,3];
+	a[3]=5;	//赋值，开始数组a的长度是3，现在赋值给a[3]之后，数组长度动态增长为4
+	window.alert(a[3]);*/
+	
+	//测试字符的split拆分字符串为数组
+	/*var str="How are you and you?";
+	//var array=str.split(" ",3);//后面的3表示取按分隔符空格，分割后的字段的前三个生成一个数组
+	var array=str.split(" ");//不指定split函数的limit参数，表示取分隔符分割之后的所有字段生成一个数组
+	//var array=str.split("");//如果没有指定分隔符，则将会按照每个字符进行分割，之后去分割之后的所有字符生成一个数组
+	for(var i=0;i<array.length;i++){
+		document.write(array[i]+" ");
+	}*/
+	//js中另外一种遍历数组的方式，即 for(var 变量 in 数组） 方式
+	/*var array=[1,2,4,5];
+	for(var i in array){
+		document.write(array[i]+" ");
+	}
+	*/
+	/*var array=[1,2,4,5];
+	array[4]="hello";
+	array[5]="mushroom";
+	document.write(array);*/
+	//测试二维数组的遍历
+	var arr=[[12,123,4],["a","b","c"],[6,56]];//相当于是个三行某列的数组
+	//遍历
+	for(var i=0;arr.length;i++){//统计一共有几行
+		//输出第一行（二维数组一个元素[数组]
+		for(var j=0;j<arr[i].length;j++){//每行是一个一维数组，统计每行数组有几个元素
+			document.write(arr[i][j]+"&nbsp;&nbsp;&nbsp;");
+		}
+		document.write("<br/>");
+	}
+	//如果我要直接方位“c”，该如何访问
+	alert(arr[1][2]);
+</script>
+</head>
+<body>
+
+</body>
+</html>

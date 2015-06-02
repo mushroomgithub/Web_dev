@@ -1,0 +1,40 @@
+<!-- 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>game ball Page</title>
+<script type="text/javascript">
+var directX=1;//x轴方向
+var directY=1;//y轴方向
+var sunX=0;//太阳的初始x轴坐标
+var sunY=0;//太阳的初始y轴坐标
+var speed=2;//如果想要调整太阳移动的速度
+function sunMove(){
+	//sunX+=directX;
+	sunX+=directX*speed;
+	//sunY+=directY;
+	sunY+=directY*speed;
+	//之后修改div的left和top值,记住给div的style属性绝对定位，不然小太阳不会移动
+	document.getElementById('sundiv').style.left=sunX+"px";
+	sundiv.style.top=sunY+"px";
+	//判断什么时间，转变方向
+	//x方向（offsetWidth可以返回,当前这个对象实际宽度）
+	if(sunX+sundiv.offsetWidth>=document.body.clientWidth||sunX<=0){//说明横向到达边缘，需要转向
+		directX=-directX;
+	}
+	if(sunY+sundiv.offsetHeight>=document.body.clientHeight||sunY<=0){
+		directY=-directY;
+	}
+	
+}
+var myTimer=window.setInterval("sunMove()",10);
+</script>
+</head>
+<body style="background: url('pic/Lighthouse.jpg');">
+<div id="sundiv" style="position: absolute;">
+<img src="pic/sun.jpg"/>
+</div>
+</body>
+</html>

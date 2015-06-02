@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>js Event2</title>
+<script type="text/javascript">
+/*
+ 	使用js完成以下功能
+ 	1.防止用户通过点击鼠标右键菜单拷贝网页内容
+ 	2.当用户试图选中网页文字拷贝时，给出提示 版权所有，禁止拷贝
+ 	提示：使用oncontextmenu,onselectstart事件
+ 	
+ */
+ function test1(){
+	window.alert("onload");
+}
+function test2(){
+	window.alert("before unload");
+}
+ function test3(){
+	 window.alert("不要点击右键");
+	 return false;
+ }
+ function test4(){
+	 window.alert("不允许选择网页内容");
+	 return false;
+ }
+</script>
+</head>
+<body onload="test1()" onbeforeunload="test2()" oncontextmenu="return test3()" onselectstart="return test4()">
+<p>shafhafha'fhafhafhakfha</p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JS Inner_Class</title>
+<script type="text/javascript">
+//静态类Math常用方法的举例
+/*window.alert(Math.ceil(4.5)); //向上取整 5
+window.alert(Math.floor(4.5)); //向下取整 4
+window.alert(Math.round(4.5)); //四舍五入 5
+window.alert(Math.random());*/   //这是返回一个0-1的16位小数位的数字
+//如何得到1-100范围内的随机数
+//window.alert(Math.round(Math.random()*100));//采用四舍五入的方式获得整数
+
+//测试Date动态类的常用方法
+//var date=new Date();
+//window.alert(new Date().toLocaleString()); //返回按照本地格式显示的当前时间 
+//window.alert(date.getFullYear()+" "+date.getMonth()+" "+date.getDay())
+
+//测试动态类String类的常用函数
+/*var str="ancans";
+window.alert(str.length); //6
+var str2="abc/def/hdf";
+var arr=str2.split("/");
+window.alert(arr);*/
+//var str3="abcdebcfg";
+//window.alert(str3.substring(2, 5)); //从下标为2的位置取到下标为5位置之前的字符串 cde
+//window.alert(str3.substr(2,4));//从下标为2的位置，去长度为4的字符串 cdef
+
+/*window.alert(str3[3]);//d
+window.alert(str3.charAt(3));//d
+window.alert(str3.indexOf("bc", 2)); //返回1,从0下标位置搜索字符串bc在str3字符串中第一次出现匹配的位置，也即返回某个指定的字符串在字符串中首次出现的位置
+*/
+
+//测试动态类Array的常用方法，该类可以轻松的创建数组，并对数组进行删除，排序，合并等操作
+/*var myArr=new Array();
+window.alert("ayyLength="+myArr.length);  //开始长度是0
+//动态的添加数据
+myArr[0]="mogu";
+myArr[1]=20;
+window.alert("new ayyLength="+myArr.length+"  "+myArr);  //2
+window.alert(myArr.pop()); // 出栈 20
+window.alert("new ayyLength="+myArr.length+"  "+myArr); //1 mogu
+myArr.push("abcd"); //数组末尾入栈
+window.alert("new ayyLength="+myArr.length+"  "+myArr); //2 mogu abcd
+*/
+
+//动态类Boolean类 实际用的不多，它是把布尔值打包的布尔对象
+/*
+ 	toString()  把逻辑值转换为字符串，并返回结果
+ 	valueOf()   返回Boolean对象的原始值
+ */
+
+/*var bool=new Boolean(true);
+window.alert(bool.toString());//这是将一个布尔值转换为一个字符串 true
+window.alert(bool.valueOf());  //返回原始布尔值true
+*/
+
+//动态类Number类的常用方法，它是对原始数值的包装类
+/*
+ * toString()  把一个Number对象转换为一个字符串，并返回结果
+ * toFixed()   把数字转换为字符串，结果的小数点后有指定位数的数字
+ */
+
+/*var num=new Number(10.234);
+window.alert(num.toString());//返回字符串10.234
+window.alert(num.toFixed(2));//返回10.23
+var b=10;
+//要求将10的二进制显示出来
+window.alert(b.toString(2)); //返回1010
+//转成8进制
+window.alert(b.toString(8)); //返回12
+
+window.alert((7/3).toFixed(2));// 2.33  7/3保留两位有效数字
+*/
+
+
+//js系统函数也即是全局函数，重点掌握eval，将字符串当做脚本执行
+var a=90;
+if(isNaN(a)){//判断a是否不是一个数，这里返回false，因为90是一个数
+	window.alert(a+"不是一个数");
+}else{
+	window.alert(a+"是一个数");
+}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

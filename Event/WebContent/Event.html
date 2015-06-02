@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JS Event</title>
+<link rel="stylesheet" type="text/css" href="CSS/event.css"/>
+<script type="text/javascript" language="javascript">
+//event对象，代表事件的状态，比如事件在其中发生的元素，键盘按键的状态，鼠标的位置，鼠标按钮的状态，事件通常与函数结合使用。
+//从dom对象层次图看，event对象是window对象的属性，其实在其他的dom对象都存在event事件，（一种event对象就代表一类事件）
+
+/*function show_coords(event)
+{
+x=event.clientX;
+y=event.clientY;
+alert("X coords: " + x + ", Y coords: " + y);
+}
+
+function test2(event){
+	window.alert("x="+event.clientX+" y="+event.clientY);
+}
+
+function showTime(event){
+	window.alert(new Date().toLocaleString());
+}*/
+//通过js如何直接操作内部元素的style属性，进行修改外观
+/*function test3(eventObj){
+	//怎么知道是哪个button被按下
+	//window.alert(eventObj.value);
+	var div=document.getElementById('div');
+	//window.alert(div.style.width);
+	if("红色"==eventObj.value){
+		div.style.backgroundColor="black";//注意style中的background-color属性在js中变成了backgroundColor
+	}else if("黑色"==eventObj.value){
+		div.style.backgroundColor="red";
+	}
+}
+*/
+
+
+//通过js如何操作外部定义的CSS样式修改外观
+//这个没放使用上面的方法去访问，因为CSS数据不是存储在style属性中，它是存储在类中的
+/*
+ 	访问方法:先取得定义类的样式表的引用，用document.styleSheets集合实现这个目的，这个集合包含了HTML页面中的所有样式表，DOM为
+ 	每个样式表定义了一个cssRules的集合，这个几个中包含了定义在样式表中的所用css规则。（注意，Mozilla和Safasi中是cssRules,而ie中是rules）。
+ */
+ function test4(eventObj){
+ 		//获取event.css中的所有class选择器都获取
+ 		var cssRules=document.styleSheets[0].rules;//这里所以写0表示所引用的第一个css文件，如果有多个引入可以根据styleSheets[i]取得
+ 		//从cssRules中取出你希望的class
+ 		var style1=cssRules[0]; //这里的0表示event.css文件中的第一条规则
+
+ 		if("红色"==eventObj.value){
+ 			style1.style.backgroundColor="black";//注意background-color属性在js中变成了backgroundColor
+ 		}else if("黑色"==eventObj.value){
+ 			style1.style.backgroundColor="red";
+ 	}
+ }
+</script>
+</head>
+<body >
+<!--
+<input type="button" onclick="showTime(event)" value="显示当前时间" />
+-->
+<!-- 如何通过修改style来改变外观 -->
+<!--
+<div id="div" style="width:400px;height:400px;background-color: black;">
+</div>
+<input type="button" value="红色" onclick="test3(this)"/>
+<input type="button" value="黑色" onclick="test3(this)"/>
+-->
+
+<!-- 如何通过修改外部CSS样式来改变外观 -->
+<div class="div">
+</div>
+<input type="button" value="红色" onclick="test4(this)"/>
+<input type="button" value="黑色" onclick="test4(this)"/>
+
+</body>
+</html>

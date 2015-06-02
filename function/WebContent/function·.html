@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>test js function</title>
+<!-- 将外部js文件引入到html文件当中，这样我们就可以随意使用js中自定义的函数了 -->
+<script language="javascript" src="js/myfunction.js" ></script>
+//在以下script中就可以随意调用js脚本中定义的函数了
+<script language="javascript" type="text/javascript" >
+//输入两个数，再输入一个运算符(+,-,*,/)，得到结果
+/*var num1=window.prompt("请输入第一个数：");
+var num2=window.prompt("请输入第二个数：");
+var operater=window.prompt("请输入运算符");
+num1=parseInt(num1);
+num2=parseInt(num2);
+document.write('最终的运算结果是：'+jiSuan(num1,num2,operater));*/
+/*test("hello mushroom！");
+//可以将函数名赋值给另外一个变量此时可以使用这个变量来调用函数
+var test2=test;
+test2(12);
+//这种方式会将函数test的定义打印出来。
+window.alert(test);*/
+
+//测试js可变数目参数函数,函数abc功能是输出参数个数
+abc(1,2,4,5);
+abc(1,2,4);
+abc();//什么都没传的话，就什么都没有
+</script>
+</head>
+<body>
+
+</body>
+</html>

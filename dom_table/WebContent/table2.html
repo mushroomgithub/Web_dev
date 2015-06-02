@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>dom_table Page</title>
+<script type="text/javascript">
+<!--
+//dom table对象
+//向表格添加一行，新的英雄
+function addNewHero(){
+	//添加新的英雄时需要实时检查当前表格中是否已经存在新英雄的编号，如果有则放弃添加，提示用户添加英雄编号不能重复
+	//遍历表格每一行，取每行的第一个元素的值与添加英雄的编号比较
+	var tabRows=mytable.rows;
+	var newIndex=1;
+	//window.alert(tabRows.length);
+	for(var i=0;i<tabRows.length;i++){
+		var tabCells=tabRows[i].cells;
+		//window.alert("row ok");
+		if(tabCells[0].innerText==sortNum.value){
+				window.alert("添加英雄编号已存在！");
+				return;
+		}
+		if(tabCells[0].innerText<sortNum.value){//找到用户需要插入表格的位置
+			newIndex++;
+		}
+	}
+	//获得用户添加信息
+	var NewTableRow=mytable.insertRow(newIndex);
+	NewTableRow.insertCell(0).innerText=sortNum.value;
+	NewTableRow.insertCell(1).innerText=heroname.value;
+	NewTableRow.insertCell(2).innerText=nickname.value;
+}
+//-->
+</script>
+</head>
+<body>
+<h1 style="color: green;font-size: 20px;">梁山英雄排行榜</h1>
+<table id="mytable" border=1>
+<tr><td>排名</td><td>姓名</td><td>绰号</td></tr>
+<tr><td>1</td><td>宋江</td><td>及时雨</td></tr>
+<tr><td>2</td><td>卢俊义</td><td>玉麒麟</td></tr>
+</table>
+
+ <h2 style="color: red;font-size: 20px;">添加新的梁山英雄</h2>
+ 排&nbsp;&nbsp;名:<input type="text" id="sortNum"/><br/>
+ 英雄名:<input type="text" id="heroname"/><br/>
+ 绰&nbsp;&nbsp;号:<input type="text" id="nickname"/><br/>
+ <input type="button" value="添加新英雄" onclick="addNewHero()"/>
+</body>
+</html>

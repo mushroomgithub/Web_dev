@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jS Object2 extends</title>
+<script type="text/javascript" language="javascript">
+//初步体验Js Object类
+//创建Person实例
+//传统的方法
+/*function Person(){
+	
+}
+var p1=new Person();
+p1.name="小米";*/
+//创建对象还有一种方式，使用Object创建,之后给其添加属性即可
+/*var p1=new Object();	//此时p1就是一个对象
+p1.name="小米";
+window.alert(p1.constructor);
+//学习Object的属性
+*/
+//var i1=new Number(10);
+/*window.alert(i1.constructor);
+var i2=12;
+window.alert(i2.constructor);*/
+//测试我们可以给系统类添加方法
+/*Number.prototype.add=function(a){//这么做之后所有的Number对象都有一个add函数，实现自己加上a，结果返回一个Number对象
+	return this+a;
+}
+
+window.alert(i1.add(10).add(30));	//输出50
+var b=90;
+window.alert(b.add(40));//输出130
+*/
+
+/*
+	请思考给js中的Array对象扩展一个find（val）方法，当一个Array对象
+ 	调用该方法的时候，如果能找到val则返回其下标，否则返回-1
+ */
+ //初步体验Array
+ /*var arr1=new Array(3); arr1有三个元素
+ arr1[0]="Georage";
+ arr1[1]="John";
+ arr1[2]="Thomas";
+ //遍历该数组
+ for(var i=0;i<arr1.length;i++){
+	 document.write(arr1[i]+"&nbsp;&nbsp;");
+ }
+ //使用Array提供的方法，颠倒数据
+ arr1.reverse();
+ document.write("<br/>");
+//遍历该数组
+ for(var i=0;i<arr1.length;i++){
+	 document.write(arr1[i]+"&nbsp;&nbsp;");
+ }
+ */
+ /*var arr=new Array(4);
+ arr[0]="Georage";
+ arr[1]="John";
+ arr[2]="Thomas";
+ arr[3]="mogu";
+ Array.prototype.find=function(val){//给所有Array对象添加一个find(val)函数
+	 for(var i=0;i<this.length;i++){
+		 if(val==this[i]){
+			 return i;
+		 }
+	 }
+ 	return -1;
+ }
+ window.alert("mogu 下标为："+arr.find("mogu"));
+ window.alert("Georabe 下标为："+arr.find("Georabe"));*/
+ 
+ //创建对象的又一种形式
+ /*
+ 	如果一个对象比较简单，我们可以直接创建,属性天然是公开的
+ */
+ /*var dog={name:"点点",age:5};
+ window.alert("名字 "+dog.name+"   年龄"+dog.age);
+ window.alert(dog.constructor);*/
+ /*var dog={name:"点点",age:5,fun1:function(){
+	 window.alert("Hello");
+ },fun2:function(){
+	 window.alert("World!");
+ }};
+ window.alert("名字 "+dog.name+"   年龄"+dog.age);
+ dog.fun1();
+ dog.fun2();*/
+ 
+ /*var dog={name:"点点"};
+ function test(){
+	 window.alert(this.name);
+ }
+ 
+ test();	//undefined
+ window.test();	//undefined
+ test.call(dog);//《==》dog.test() ,输出点点
+ */
+ 
+ //有时我们会看到这样一种函数调用方法
+ //即 函数名.call(对象名) 便于知道是那个类调用了这个函数，相当于 对象名.函数名();
+ var dog={name:"小米",age:10,sayHello:function(a,b){window.alert("结果是："+(a+b));}};
+ //循环列出dog对象的所有属性和方法，使用对象名['属性名']
+ for(var key in dog){	//key类属性名
+	 document.write(key+": "+dog[key]+"<br/>");
+ }
+ //对象的遍历
+ //有些时候，不同的浏览器，对window里的属性可能不太一样
+ //当前浏览器对于window对象，有属性和方法如下：
+ document.write("<br/>"+"******当前浏览器对于window对象，有属性和方法如下：*****"+"<br/>");
+ for(var key in window){
+	 document.write(key+":  "+window[key]+"<br/>");
+ }
+</script>
+</head>
+<body>
+
+</body>
+</html>

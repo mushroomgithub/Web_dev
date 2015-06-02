@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/*function Person(name,_age,_sal){
+	this.name=name;//公开属性
+	var age=_age;//私有属性
+	var salary=_sal;//私有属性
+	//在类中如何定义公开方法（特权方法），私有方法（内部方法）,如果希望操作内部私有属性，则可调用公开的方法
+	this.show=function(){//公开方法
+		window.alert(name+" "+age+" "+salary);
+		show2();
+	}
+	//私有方法,它也可以访问内部私有属性，但是在类外部是不可以被对象调用的
+	function show2(){
+		window.alert(age+" "+salary);
+	}
+}
+var p1=new Person("mogu",27,10000);
+window.alert(p1.name+" "+p1.age);
+p1.show();*/
+
+//类的继承
+//首先抽象一个学生类
+/*function Stu(name,age){
+	this.name=name;
+	this.age=age;
+	this.show=function(){
+		window.alert(this.name+" "+this.age);
+	}
+	this.payFee=function(salary,zk){
+		window.alert("实缴学费是："+salary*zk);
+	}
+}
+*/
+//定义一个中学生类继承自学生类
+/*function MidStu(name,age){
+	///window.alert(Stu);//在构造Midstu实例的时候，会打印Stu的定义
+	this.stu=Stu;//这是将类Stu的构造方法给stu了，当然stu中就有了Stu类中的所有属性和方法了，包括私有属性和方法
+	this.stu(name,age);*/ //js中实际上是通过对象冒充技术，来实现继承，这句话不能少，否则就不是继承，因为js是动态语言，如果没有这句就不会构造本类
+	//MidStu可以覆盖Stu父类的show方法
+	/*this.show=function(){
+		window.alert("MidStu show()");
+	}*/
+//}
+/*var midStu=new MidStu("mogu", 16);
+midStu.show();	//显示mogu 16,如果覆盖了父类方法，则显示MidStu Show()
+midStu.payFee(1000,0.8);*/	//实缴学费是： 800
+//再定义一个小学生类，也继承自学生类
+/*function Pupil(name,age){
+	this.stu=Stu;
+	this.stu(name,age);//js中实际上是通过对象冒充技术，来实现继承，这句话不能少，否则就不是继承
+}
+
+var pupil=new Pupil("小白", 8);
+pupil.show(); //显示小白 8
+pupil.payFee(500,0.5);  //显示 实缴学费是： 250
+*/
+
+//多态经典案例
+//主人类
+function Master(){
+	//给动物喂食物
+	this.feed=function(animal,food){
+		window.alert(animal.constructor);//可以看出多态是如何实现的，打印出真正的调用对象的构造函数
+		window.alert(food.constructor);
+		document.write("主人给  "+animal.name+"  喂  "+food.name+"<br/>");
+	}
+}
+
+//食物抽象类
+function Food(name){
+	this.name=name;
+}
+
+//鱼类
+function Fish(name){
+	this.food=Food;
+	this.food(name);
+}
+//骨头类
+function Bone(name){
+	this.food=Food;
+	this.food(name);
+}
+//动物类
+function Animal(name){
+	this.name=name;
+}
+
+//猫类
+function Cat(name){
+	this.animal=Animal;
+	this.animal(name);
+}
+
+//狗类
+function Dog(name){
+	this.animal=Animal;
+	this.animal(name);
+}
+
+var cat=new Cat("小猫");
+var dog=new Dog("小狗");
+var fish=new Fish("鱼类");
+var bone=new Bone("骨头");
+var master=new Master();
+master.feed(cat, fish);
+master.feed(dog, bone);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

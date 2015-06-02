@@ -1,0 +1,26 @@
+/*¿‡—°‘Ò∆˜*/
+
+.style{
+	font-size:xx-large;
+	color: orange;
+}
+
+.style1{
+	font-size:20px;
+	color:black;
+	background-color: gray;
+}
+
+.style2{
+	color: red;	
+}
+.style3{
+	color:black;
+	text-decoration: underline;
+}
+
+.style2,.style3{
+	font-size:20px;
+	font-style: italic;
+	background-color: gray;
+}

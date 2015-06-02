@@ -1,0 +1,78 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>坦克背景实现转向</title>
+</head>
+<body onkeydown="tkMethod(event)">
+
+<div id="tankField" style="background-color: black;width: 400px;height: 370px;position: absolute;">
+<div id="tkdiv" style="background-position-y:0px;background-image: url('./pic/tk.bmp');width: 40px;height: 37px;position: absolute;"></div>
+</div>
+
+<script type="text/javascript">
+//使用面向对象的方法开发web版本的坦克大战1.0(可以使用键盘ASDW来控制坦克的走向)
+function myTank(x,y,direct){
+	this.x=x;//坦克的横坐标
+	this.y=y;//坦克的纵坐标
+	this.direct=direct;//坦克的方向
+	this.speed=5;//坦克的速度,可以设置按下WASD按键时，坦克的移动速度
+	
+	//初始化自己坦克的初始位置和方向,即改变坦克div的left和top值
+	var mTk=document.getElementById('tkdiv');
+	mTk.style.left=this.x+"px";
+	mTk.style.top=this.y+"px";
+	mTk.style.backgroundPositionY="0px";
+	/*tkdiv.style.left=this.x+"px";
+	tkdiv.style.top=this.y+"px";
+	tkdiv.style.backgroundPositionY="0px";*/
+	//event表示按键事件，a-左 3，s-下 2，d-右 1，w-上 0
+	this.move=function move(event){
+		switch(event.keyCode){
+		case 65://A-左 3
+			this.x-=this.speed;
+			if(this.x<=0)//控制坦克div不会向左移动出其规定左边界
+				this.x=0;
+			this.direct=3;//跟以后2.0版本发子弹有关
+			tkdiv.style.backgroundPositionY="37px";
+			break;
+		case 83://S-下 2
+			this.y+=this.speed;
+			if(this.y>=333)//控制坦克div不会向左移动出其规定下边界
+				this.y=333;
+			this.direct=2;
+			tkdiv.style.backgroundPositionY="74px";
+			break;
+		case 68://D-右 1
+			this.x+=this.speed;
+			if(this.x>=360)//控制坦克div不会向左移动出其规定右边界
+				this.x=360;
+			this.direct=1;
+			tkdiv.style.backgroundPositionY="-37px";
+			break;
+		case 87://W-上 0
+			this.y-=this.speed;
+			if(this.y<=0)//控制坦克div不会向左移动出其规定上边界
+				this.y=0;
+			this.direct=0;
+			tkdiv.style.backgroundPositionY="0px";
+			break;
+		}
+		//按键之后重新修改坦克的left和top值，但是方向需要在swith的分支中修改
+		tkdiv.style.left=this.x+"px";
+		tkdiv.style.top=this.y+"px";
+	}
+}
+//创建一个我的坦克对象，同时初始化它的位置和方向
+var mTk=new myTank(200,333,0);
+//定义坦克的动作，比如移动或者发子弹
+function tkMethod(event){
+	if(event.keyCode=65||event.keyCode==68||event.keyCode==83||event.keyCode==87){
+		mTk.move(event);
+	}/*else if(){//keyCode等于某一值，比如是空格键时，坦克发子弹
+		
+	}*/
+}
+</script>
+</body>
+</html>
